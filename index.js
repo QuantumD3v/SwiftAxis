@@ -11,7 +11,7 @@ app.get('/', (req,res)=> {
     });
 });
 
-app.get('/api/v1/json1', (req, res) => {
+app.get('/json', (req, res) => {
     fs.readFile('json1.json', 'utf8', (err, data) => {
         if (err) {
             // If there's an error reading the file, send an error response
