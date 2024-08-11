@@ -9,7 +9,7 @@
     "redirects": [
       {
         "source": "/api/v1/json1",
-        "destination": "/json1.json"
+        "destination": "/api/v1/json1"
       }
     ]
   }
