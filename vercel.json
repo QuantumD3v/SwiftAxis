@@ -6,10 +6,10 @@
         "use": "@vercel/node"
       }
     ],
-    "routes": [
+    "redirects": [
       {
-        "src": "/api/v1/json1",
-        "dest": "./json1.json"
+        "source": "/api/v1/json1",
+        "destination": "/json1.json"
       }
     ]
   }
