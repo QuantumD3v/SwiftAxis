@@ -9,7 +9,7 @@
     "routes": [
       {
         "src": "/api/v1/json1",
-        "dest": "/json1.json"
+        "dest": "./json1.json"
       }
     ]
   }
