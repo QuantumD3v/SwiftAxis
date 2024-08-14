@@ -12,8 +12,8 @@
       "dest": "/index.js"
     },
     {
-      "source": "/url/1",
-      "destination": "https://google.com"
+      "src": "/url/1",
+      "dest": "https://google.com"
     }
   ]
 }
