@@ -13,7 +13,7 @@
     }
   ],
 
-  "rewrites": [
+  "redirects": [
     {
       "source": "/url/1",
       "destination": "https://google.com"
