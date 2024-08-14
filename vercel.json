@@ -6,14 +6,11 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "redirects": [
     {
       "src": "/api/v1/json1",
       "dest": "/index.js"
-    }
-  ],
-
-  "redirects": [
+    },
     {
       "source": "/url/1",
       "destination": "https://google.com"
