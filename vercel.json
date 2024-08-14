@@ -12,11 +12,11 @@
       "dest": "/index.js"
     }
   ],
-  
+
   "rewrites": [
     {
-      "src": "/url/1",
-      "dest": "https://google.com"
+      "source": "/url/1",
+      "destination": "https://google.com"
     }
   ]
 }
