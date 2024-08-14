@@ -10,7 +10,10 @@
     {
       "src": "/api/v1/json1",
       "dest": "/index.js"
-    },
+    }
+  ],
+  
+  "rewrites": [
     {
       "src": "/url/1",
       "dest": "https://google.com"
