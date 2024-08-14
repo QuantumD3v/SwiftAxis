@@ -8,12 +8,12 @@
   ],
   "redirects": [
     {
-      "src": "/api/v1/json1",
-      "dest": "/index.js"
+      "source": "/api/v1/json1",
+      "destination": "/index.js"
     },
     {
-      "src": "/url/1",
-      "dest": "https://google.com"
+      "source": "/url/1",
+      "destination": "https://google.com"
     }
   ]
 }
