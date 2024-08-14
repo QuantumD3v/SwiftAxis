@@ -10,7 +10,9 @@
     {
       "source": "/api/v1/json1",
       "destination": "/index.js"
-    },
+    }
+  ],
+  "rewrites": [
     {
       "source": "/url/1",
       "destination": "https://google.com"
