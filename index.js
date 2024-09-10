@@ -8,7 +8,8 @@ app.get('/', (req,res)=> {
     res.send({message:'No requests on url',
         info:'Powered By NodeJS',
         made:'Made On NodeJS',
-        runner:'Running on Vercel'
+        runner:'Running on Vercel',
+        isjoy : 'ENJOY'
     });
 });
 
