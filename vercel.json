@@ -16,6 +16,14 @@
     {
       "source": "/url/1",
       "destination": "https://google.com"
+    },
+    {
+      "source": "/encrypt",
+      "destination": "/api/encrypt"
+    },
+    {
+      "source": "/decrypt",
+      "destination": "/api/decrypt"
     }
   ]
 }

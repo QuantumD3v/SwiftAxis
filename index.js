@@ -4,32 +4,37 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req,res)=> {
-    res.send({message:'No requests on url',
-        info:'Powered By NodeJS',
-        made:'Made On NodeJS',
-        runner:'Running on Vercel',
-        isjoy : 'ENJOY'
+// Default route
+app.get('/', (req, res) => {
+    res.send({
+        message: 'No requests on url',
+        info: 'Powered By NodeJS',
+        made: 'Made On NodeJS',
+        runner: 'Running on Vercel',
+        isjoy: 'ENJOY'
     });
 });
 
+// Serve json1.json
 app.get('/api/v1/json1', (req, res) => {
     res.sendFile(path.join(__dirname, 'json1.json'));
 });
 
-//app.get('/json', (req, res) => {
-//    fs.readFile('json1.json', 'utf8', (err, data) => {
-//        if (err) {
-//            // If there's an error reading the file, send an error response
-//            console.error('Error reading use.json:', err);
-//            res.status(500).send('Internal Server Error');
-//            return;
-//        }
-//        // Send the contents of the use.json file as a JSON response
-//        res.json(JSON.parse(data));
-//    });
-//});
+// Encrypt endpoint
+app.get('/encrypt', (req, res) => {
+    const text = req.query.t || '';
+    const encodedText = Buffer.from(text).toString('base64');
+    res.json({ "test": text, "base64": encodedText });
+});
 
+// Decrypt endpoint
+app.get('/decrypt', (req, res) => {
+    const b64Text = req.query.b64 || '';
+    const decodedText = Buffer.from(b64Text, 'base64').toString('utf-8');
+    res.json({ "base64": b64Text, "text": decodedText });
+});
+
+// Start server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port ${port}`);
 });
