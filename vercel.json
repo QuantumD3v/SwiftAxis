@@ -18,12 +18,8 @@
       "destination": "https://google.com"
     },
     {
-      "source": "/api/util/encrypt",
-      "destination": "index.js"
-    },
-    {
-      "source": "/api/util/decrypt",
-      "destination": "index.js"
+      "source": "/api/util/base64",
+      "destination": "/index.js"
     }
   ]
 }
