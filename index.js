@@ -20,18 +20,36 @@ app.get('/api/v1/json1', (req, res) => {
     res.sendFile(path.join(__dirname, 'json1.json'));
 });
 
+// Old Code
 // Encrypt endpoint
-app.get('/api/util/encrypt', (req, res) => {
-    const text = req.query.t || '';
-    const encodedText = Buffer.from(text).toString('base64');
-    res.json({ "test": text, "base64": encodedText });
-});
+// app.get('/api/util/base64', (req, res) => {
+//     const text = req.query.e || '';
+//     const encodedText = Buffer.from(text).toString('base64');
+//     res.json({ "test": text, "base64": encodedText });
+// });
 
 // Decrypt endpoint
-app.get('/api/util/decrypt', (req, res) => {
-    const b64Text = req.query.b64 || '';
-    const decodedText = Buffer.from(b64Text, 'base64').toString('utf-8');
-    res.json({ "base64": b64Text, "text": decodedText });
+// app.get('/api/util/base64', (req, res) => {
+//     const b64Text = req.query.d || '';
+//     const decodedText = Buffer.from(b64Text, 'base64').toString('utf-8');
+//     res.json({ "base64": b64Text, "text": decodedText });
+// });
+
+// New Code
+// Single Base64 endpoint
+app.get('/api/util/base64', (req, res) => {
+    const encodeText = req.query.e;
+    const decodeText = req.query.d;
+
+    if (encodeText) {
+        const encodedText = Buffer.from(encodeText).toString('base64');
+        res.json({ "original": encodeText, "base64": encodedText });
+    } else if (decodeText) {
+        const decodedText = Buffer.from(decodeText, 'base64').toString();
+        res.json({ "base64": decodeText, "original": decodedText });
+    } else {
+        res.status(400).json({ "error": "Please provide either ?e= to encode or ?d= to decode." });
+    }
 });
 
 // Start server
