@@ -8,8 +8,8 @@
   ],
   "redirects": [
     {
-      "source": "/api/v1/json1",
-      "destination": "/index.js"
+      "source": "/gituhb",
+      "destination": "https://github.com/QuantumD3v"
     }
   ],
   "rewrites": [
