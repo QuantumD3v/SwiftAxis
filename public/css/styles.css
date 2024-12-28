@@ -1,0 +1,62 @@
+body {
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .countdown-container {
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  #countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .time-box {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .time-box span {
+    display: block;
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  
+  .top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .top-left a {
+    color: #00bfff;
+    text-decoration: none;
+  }
+  
+  .top-left a:hover {
+    text-decoration: underline;
+  }
+  
+  .small-time {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #ccc;
+  }
+  

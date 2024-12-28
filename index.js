@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Serve static assets (CSS, JS, images, etc.) from the 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Default route
 app.get('/', (req, res) => {
     res.send({
@@ -20,23 +23,7 @@ app.get('/api/v1/json1', (req, res) => {
     res.sendFile(path.join(__dirname, 'json1.json'));
 });
 
-// Old Code
-// Encrypt endpoint
-// app.get('/api/util/base64', (req, res) => {
-//     const text = req.query.e || '';
-//     const encodedText = Buffer.from(text).toString('base64');
-//     res.json({ "test": text, "base64": encodedText });
-// });
-
-// Decrypt endpoint
-// app.get('/api/util/base64', (req, res) => {
-//     const b64Text = req.query.d || '';
-//     const decodedText = Buffer.from(b64Text, 'base64').toString('utf-8');
-//     res.json({ "base64": b64Text, "text": decodedText });
-// });
-
-// New Code
-// Single Base64 endpoint
+// Base64 encoding/decoding endpoint
 app.get('/api/util/base64', (req, res) => {
     const encodeText = req.query.e;
     const decodeText = req.query.d;
@@ -50,6 +37,18 @@ app.get('/api/util/base64', (req, res) => {
     } else {
         res.status(400).json({ "error": "Please provide either ?e= to encode or ?d= to decode." });
     }
+});
+
+// New route for /ny to serve the HTML file
+app.get('/ny', (req, res) => {
+    const filePath = path.join(__dirname, 'secret', 'ny', 'index.html');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            res.status(500).send('Error reading the HTML file.');
+            return;
+        }
+        res.send(data); // Send the content of index.html
+    });
 });
 
 // Start server

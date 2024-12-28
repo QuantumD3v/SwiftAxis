@@ -1,16 +1,25 @@
 {
-  "dependencies": {
-    "express": "^4.21.1"
-  },
   "name": "apiv1",
   "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/QuantumD3v/apiv1#readme",
+  "bugs": {
+    "url": "https://github.com/QuantumD3v/apiv1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuantumD3v/apiv1.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "dev": "node index.js --host",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }
