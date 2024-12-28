@@ -9,7 +9,6 @@ body {
   align-items: center;
   height: 100vh;
   text-align: center;
-  flex-direction: column;
 }
 
 .countdown-container {
@@ -56,9 +55,8 @@ h1 {
   text-decoration: underline;
 }
 
-.top-center {
-  position: absolute;
-  top: 20px;
-  font-size: 45px;
+.middle-time {
+  font-size: 35px;
+  margin-top: 40px;
   color: #ccc;
 }
