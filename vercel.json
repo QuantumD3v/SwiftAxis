@@ -6,22 +6,22 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/ny",
-      "dest": "/index.js"
+      "source": "/ny",
+      "destination": "/index.js"
     },
     {
-      "src": "/api/v1/json1",
-      "dest": "/index.js"
+      "source": "/api/v1/json1",
+      "destination": "/index.js"
     },
     {
-      "src": "/api/util/base64",
-      "dest": "/index.js"
+      "source": "/api/util/base64",
+      "destination": "/index.js"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.js"
+      "source": "/(.*)",
+      "destination": "/index.js"
     }
   ],
   "redirects": [
