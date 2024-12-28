@@ -29,11 +29,5 @@
       "source": "/github",
       "destination": "https://github.com/QuantumD3v"
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/url/1",
-      "destination": "https://google.com"
-    }
   ]
 }
