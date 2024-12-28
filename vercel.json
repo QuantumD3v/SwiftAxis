@@ -2,26 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js", 
+      "src": "index.js", 
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/ny",
-      "dest": "/server.js"
+      "dest": "/index.js"
     },
     {
       "src": "/api/v1/json1",
-      "dest": "/server.js"
+      "dest": "/index.js"
     },
     {
       "src": "/api/util/base64",
-      "dest": "/server.js"
+      "dest": "/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/server.js"
+      "dest": "/index.js"
     }
   ],
   "redirects": [
