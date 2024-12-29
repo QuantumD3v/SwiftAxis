@@ -8,7 +8,11 @@
   ],
   "rewrites": [
     {
-      "source": "/ny",
+      "source": "/ny/en",
+      "destination": "/index.js"
+    },
+    {
+      "source": "/ny/th",
       "destination": "/index.js"
     },
     {
