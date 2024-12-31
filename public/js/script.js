@@ -1,4 +1,4 @@
-const newYear = new Date('2025-01-01T00:00:00+07:00').getTime();
+const newYear = new Date('2026-01-01T00:00:00+07:00').getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
