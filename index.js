@@ -45,7 +45,18 @@ app.get('/ny/th', (req, res) => {
     res.send(data); // Send the content of index.html
   });
 });
+// Endpoint to get the current date and time
+app.get('/api/tdrt', (req, res) => {
+  const currentDateTime = new Date();
+  const options = { timeZone: 'Asia/Bangkok', hour12: false };
+  const date = currentDateTime.toLocaleDateString('en-GB', options);
+  const time = currentDateTime.toLocaleTimeString('en-GB', options);
 
+  res.json({
+    date: date,
+    time: time
+  });
+});
 // Base64 encoding/decoding endpoint
 app.get('/api/util/base64', (req, res) => {
   const encodeText = req.query.e;
@@ -66,6 +77,6 @@ app.get('/api/util/base64', (req, res) => {
 module.exports = app;
 
 //I use this for testing in my machines
-// app.listen(port, '0.0.0.0', () => {
-//   console.log(`Server is running on http://0.0.0.0:${port}`);
-// });
+app.listen(port, '0.0.0.0', () => {
+   console.log(`Server is running on http://0.0.0.0:${port}`);
+});
