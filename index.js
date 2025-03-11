@@ -2,11 +2,23 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = 3001;
 // Serve static files (CSS, JS, etc.) from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Default route
+// Files route
+app.get('/files', (req, res) => {
+  const directoryPath = path.join(__dirname, 'public');
+  fs.readdir(directoryPath, (err, files) => {
+    if (err) {
+      res.status(500).send('Unable to scan directory');
+      return;
+    }
+    res.send(files);
+  });
+});
+
+// Default Route
 app.get('/', (req, res) => {
   res.send({
     message: 'No requests on url',
@@ -16,12 +28,6 @@ app.get('/', (req, res) => {
     isjoy: 'ENJOY'
   });
 });
-
-// app.get('/ny', (req, res) => {
-//   res.send({
-//     'endpoint-english': 'use ny.en for english'
-//   });
-// });
 
 // Serve the HTML file at /ny
 app.get('/ny/en', (req, res) => {
@@ -45,6 +51,7 @@ app.get('/ny/th', (req, res) => {
     res.send(data); // Send the content of index.html
   });
 });
+
 // Endpoint to get the current date and time
 app.get('/api/tdrt', (req, res) => {
   const currentDateTime = new Date();
@@ -52,6 +59,7 @@ app.get('/api/tdrt', (req, res) => {
   const date = currentDateTime.toLocaleDateString('en-GB', options);
   const time = currentDateTime.toLocaleTimeString('en-GB', options);
 
+  res.set('Cache-Control', 'no-store'); // Ensure the response is not cached
   res.json({
     date: date,
     time: time
