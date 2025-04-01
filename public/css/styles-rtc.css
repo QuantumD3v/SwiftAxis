@@ -1,0 +1,41 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
+.maker-link {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.maker-link:hover {
+    text-decoration: underline;
+}
+
+.clock-container {
+    text-align: center;
+}
+
+.clock {
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.date {
+    font-size: 18px;
+    margin-top: 10px;
+    opacity: 0.8;
+}

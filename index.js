@@ -29,42 +29,6 @@ app.get('/', (req, res) => {
   });
 });
 
-// Serve the HTML file at /ny
-app.get('/ny/en', (req, res) => {
-  const filePath = path.join(__dirname, 'secret', 'ny', 'index.html');
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      res.status(500).send('Error reading the HTML file.');
-      return;
-    }
-    res.send(data); // Send the content of index.html
-  });
-});
-
-app.get('/ny/th', (req, res) => {
-  const filePath = path.join(__dirname, 'secret', 'nyt', 'index.html');
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      res.status(500).send('Error reading the HTML file.');
-      return;
-    }
-    res.send(data); // Send the content of index.html
-  });
-});
-
-// Endpoint to get the current date and time
-app.get('/api/tdrt', (req, res) => {
-  const currentDateTime = new Date();
-  const options = { timeZone: 'Asia/Bangkok', hour12: false };
-  const date = currentDateTime.toLocaleDateString('en-GB', options);
-  const time = currentDateTime.toLocaleTimeString('en-GB', options);
-
-  res.set('Cache-Control', 'no-store'); // Ensure the response is not cached
-  res.json({
-    date: date,
-    time: time
-  });
-});
 // Base64 encoding/decoding endpoint
 app.get('/api/util/base64', (req, res) => {
   const encodeText = req.query.e;
