@@ -9,11 +9,11 @@
   "routes": [
     {
       "src": "/api/.*",
-      "dest": "index.js"
+      "dest": "api/index.js"
     },
     {
       "src": "/file/.*",
-      "dest": "index.js"
+      "dest": "api/index.js"
     },
     {
       "src": "/github",
@@ -22,7 +22,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "index.js"
+      "dest": "api/index.js"
     }
   ]
 }
