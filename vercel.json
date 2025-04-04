@@ -6,20 +6,19 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
       "src": "/api/.*",
       "dest": "index.js"
     },
     {
+      "src": "/github",
+      "status": 301,
+      "headers": { "Location": "https://github.com/QuantumD3v" }
+    },
+    {
       "src": "/(.*)",
       "dest": "index.js"
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/github",
-      "destination": "https://github.com/QuantumD3v"
     }
   ]
 }
