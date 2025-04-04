@@ -3,10 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3001;
-// Serve static files (CSS, JS, etc.) from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/css', (req, res) => {
+// Serve React static files from the build folder
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// API endpoints (prefixed with /api)
+
+// Example: Serve files from the public/css directory
+app.get('/file/css', (req, res) => {
   const directoryPath = path.join(__dirname, 'public', 'css');
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
@@ -17,7 +21,8 @@ app.get('/css', (req, res) => {
   });
 });
 
-app.get('/js', (req, res) => {
+// Example: Serve files from the public/js directory
+app.get('/file/js', (req, res) => {
   const directoryPath = path.join(__dirname, 'public', 'js');
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
@@ -28,7 +33,8 @@ app.get('/js', (req, res) => {
   });
 });
 
-app.get('/sudo', (req, res) => {
+// Example: Sudo directory listing (with Base64 auth) under /api
+app.get('/api/sudo', (req, res) => {
   const directoryPath = path.join(__dirname, 'private');
   const encodedUser = req.query.u;
 
@@ -53,42 +59,35 @@ app.get('/sudo', (req, res) => {
       res.send(files);
     });
   } catch (error) {
-    // Handle invalid Base64 strings
     return res.status(400).send('Invalid Base64-encoded user parameter');
   }
 });
 
-// Default Route
-app.get('/', (req, res) => {
-  res.send({
-    message: 'No requests on url',
-    info: 'Powered By NodeJS',
-    made: 'Made On NodeJS',
-    runner: 'Running on Vercel',
-    isjoy: 'ENJOY'
-  });
-});
-
-// Base64 encoding/decoding endpoint
-app.get('/api/util/base64', (req, res) => {
+// Base64 encoding/decoding endpoint under /api/util
+app.get('/api/base64', (req, res) => {
   const encodeText = req.query.e;
   const decodeText = req.query.d;
 
   if (encodeText) {
     const encodedText = Buffer.from(encodeText).toString('base64');
-    res.json({ "original": encodeText, "base64": encodedText });
+    res.json({ original: encodeText, base64: encodedText });
   } else if (decodeText) {
     const decodedText = Buffer.from(decodeText, 'base64').toString();
-    res.json({ "base64": decodeText, "original": decodedText });
+    res.json({ base64: decodeText, original: decodedText });
   } else {
-    res.status(400).json({ "error": "Please provide either ?e= to encode or ?d= to decode." });
+    res.status(400).json({ error: 'Please provide either ?e= to encode or ?d= to decode.' });
   }
 });
 
-// Export the Express app to work with Vercel's serverless functions
-module.exports = app;
-
-//I use this for testing in my machines
-app.listen(port, '0.0.0.0', () => {
-   console.log(`Server is running on http://0.0.0.0:${port}`);
+// Catch-all route: serve the React app for any non-API route.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
+// For testing or local development
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running on http://0.0.0.0:${port}`);
+});
+
+// Export the Express app for deployment (e.g., Vercel serverless functions)
+module.exports = app;
