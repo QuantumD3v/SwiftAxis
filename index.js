@@ -5,7 +5,7 @@ const app = express();
 const port = 3001;
 
 // Serve React static files from the build folder
-app.use(express.static(path.join(__dirname, '..', 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // API endpoints (prefixed with /api)
 
@@ -81,7 +81,7 @@ app.get('/api/base64', (req, res) => {
 
 // Catch-all route: serve the React app for any non-API route.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 // For testing or local development
