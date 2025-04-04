@@ -21,7 +21,7 @@
       "headers": { "Location": "https://github.com/QuantumD3v" }
     },
     {
-      "src": "/",
+      "src": "/(.*)",
       "dest": "index.js"
     }
   ]
