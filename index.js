@@ -80,7 +80,7 @@ app.get('/api/base64', (req, res) => {
 });
 
 // Catch-all route: serve the React app for any non-API route.
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
