@@ -2,36 +2,25 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js", 
+      "src": "index.js",
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/ny/en",
-      "destination": "/index.js"
+      "src": "/api/.*",
+      "dest": "index.js"
     },
     {
-      "source": "/ny/th",
-      "destination": "/index.js"
-    },
-    {
-      "source": "/api/v1/json1",
-      "destination": "/index.js"
-    },
-    {
-      "source": "/api/util/base64",
-      "destination": "/index.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.js"
+      "src": "/(.*)",
+      "dest": "index.js"
     }
   ],
   "redirects": [
     {
       "source": "/github",
-      "destination": "https://github.com/QuantumD3v"
+      "destination": "https://github.com/QuantumD3v",
+      "permanent": true
     }
   ]
 }
