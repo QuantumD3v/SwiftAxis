@@ -5,13 +5,13 @@ const app = express();
 const port = 3001;
 
 // Serve React static files from the build folder
-app.use(express.static(path.join(__dirname, '..', 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // API endpoints (prefixed with /api)
 
 // Example: Serve files from the public/css directory
 app.get('/file/css', (req, res) => {
-  const directoryPath = path.join(__dirname, '..', 'public', 'css');
+  const directoryPath = path.join(__dirname, 'public', 'css');
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
       res.status(500).send('Unable to scan directory');
@@ -23,7 +23,7 @@ app.get('/file/css', (req, res) => {
 
 // Example: Serve files from the public/js directory
 app.get('/file/js', (req, res) => {
-  const directoryPath = path.join(__dirname, '..', 'public', 'js');
+  const directoryPath = path.join(__dirname, 'public', 'js');
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
       res.status(500).send('Unable to scan directory');
@@ -35,7 +35,7 @@ app.get('/file/js', (req, res) => {
 
 // Example: Sudo directory listing (with Base64 auth) under /api
 app.get('/api/sudo', (req, res) => {
-  const directoryPath = path.join(__dirname, '..', 'private');
+  const directoryPath = path.join(__dirname, 'private');
   const encodedUser = req.query.u;
 
   if (!encodedUser) {
@@ -81,7 +81,7 @@ app.get('/api/base64', (req, res) => {
 
 // Catch-all route: serve the React app for any non-API route.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 // For testing or local development
