@@ -79,8 +79,13 @@ app.get('/api/base64', (req, res) => {
   }
 });
 
+// Test route
+app.get('/test', (req, res) => {
+  res.json({ message: 'Test route is working!' });
+});
+
 // Catch-all route: serve the React app for any non-API route.
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
