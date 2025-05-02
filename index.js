@@ -96,9 +96,9 @@ app.get('/test', (req, res) => {
 });
 
 // Catch-all route: serve the React app for any non-API route.
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+//app.get('/', (req, res) => {
+//  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+//});
 
 // For testing or local development
 app.listen(port, '0.0.0.0', () => {
