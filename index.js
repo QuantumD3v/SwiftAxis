@@ -33,6 +33,17 @@ app.get('/file/js', (req, res) => {
   });
 });
 
+app.get('/arch/', (req, res) => {
+  const directoryPath = path.join(__dirname, 'archlinux');
+  fs.readdir(directoryPath, (err, files) => {
+    if (err) {
+      res.status(500).send('Unable to scan directory');
+      return;
+    }
+    res.send(files);
+  });
+});
+
 // Example: Sudo directory listing (with Base64 auth) under /api
 app.get('/api/sudo', (req, res) => {
   const directoryPath = path.join(__dirname, 'private');
