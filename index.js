@@ -34,7 +34,7 @@ app.get('/file/js', (req, res) => {
 });
 
 app.get('/arch/', (req, res) => {
-  const directoryPath = path.join(__dirname, 'archlinux');
+  const directoryPath = path.join(__dirname, 'arch');
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
       res.status(500).send('Unable to scan directory');
