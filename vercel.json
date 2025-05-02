@@ -16,6 +16,10 @@
       "dest": "index.js"
     },
     {
+      "src": "/arch/.*",
+      "dest": "index.js"
+    },
+    {
       "src": "/",
       "dest": "index.js"
     }
