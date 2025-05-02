@@ -33,7 +33,7 @@ app.get('/file/js', (req, res) => {
   });
 });
 
-app.get('/arch/', (req, res) => {
+app.get('/arch', (req, res) => {
   const directoryPath = path.join(__dirname, 'arch');
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
