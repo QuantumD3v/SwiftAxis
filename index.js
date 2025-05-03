@@ -44,36 +44,6 @@ app.get('/arch', (req, res) => {
   });
 });
 
-// Example: Sudo directory listing (with Base64 auth) under /api
-app.get('/api/sudo', (req, res) => {
-  const directoryPath = path.join(__dirname, 'private');
-  const encodedUser = req.query.u;
-
-  if (!encodedUser) {
-    return res.status(400).send('Missing user parameter');
-  }
-
-  try {
-    // Decode the Base64-encoded user
-    const decodedUser = Buffer.from(encodedUser, 'base64').toString();
-
-    // Check if the decoded user is allowed
-    if (decodedUser !== 'ccelestia') {
-      return res.status(403).send('You are not authorized to access this directory');
-    }
-
-    // Read the directory if the user is authorized
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        return res.status(500).send('Unable to scan directory');
-      }
-      res.send(files);
-    });
-  } catch (error) {
-    return res.status(400).send('Invalid Base64-encoded user parameter');
-  }
-});
-
 // Base64 encoding/decoding endpoint under /api/util
 app.get('/api/base64', (req, res) => {
   const encodeText = req.query.e;
