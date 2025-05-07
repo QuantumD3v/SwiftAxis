@@ -5,7 +5,8 @@ const app = express();
 const port = 3001;
 
 // Serve React static files from the build folder
-app.use(express.static(path.join(__dirname, 'client/build')));
+//app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client-2')));
 
 // API endpoints (prefixed with /api)
 
@@ -80,7 +81,7 @@ app.listen(port, '0.0.0.0', () => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client-2', 'index.html'));
 });
 
 // Export the Express app for deployment (e.g., Vercel serverless functions)
