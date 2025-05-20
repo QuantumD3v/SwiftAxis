@@ -34,8 +34,8 @@ app.get('/file/js', (req, res) => {
   });
 });
 
-app.get('/file', (req, res) => {
-  const directoryPath = path.join(__dirname, 'public');
+app.get('/file/img', (req, res) => {
+  const directoryPath = path.join(__dirname, 'public', 'img');
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
       res.status(500).send('Unable to scan directory');
