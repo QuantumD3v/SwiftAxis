@@ -34,6 +34,19 @@ app.get('/file/js', (req, res) => {
   });
 });
 
+// app.get('/file/img', (req, res) => {
+//   const directoryPath = path.join(__dirname, 'public', 'img');
+//   fs.readdir(directoryPath, (err, files) => {
+//     if (err) {
+//       res.status(500).send('Unable to scan directory');
+//       return;
+//     }
+//     // ส่งลิงก์ URL ที่เข้าถึงไฟล์ได้
+//     const fileUrls = files.map(file => `/img/${file}`);
+//     res.json(fileUrls);
+//   });
+// });
+
 app.get('/file/img', (req, res) => {
   const directoryPath = path.join(__dirname, 'public', 'img');
   fs.readdir(directoryPath, (err, files) => {
@@ -41,11 +54,12 @@ app.get('/file/img', (req, res) => {
       res.status(500).send('Unable to scan directory');
       return;
     }
-    // ส่งลิงก์ URL ที่เข้าถึงไฟล์ได้
-    const fileUrls = files.map(file => `/img/${file}`);
-    res.json(fileUrls);
+    const host = req.headers.host;
+    const urls = files.map(file => `https://${host}/img/${file}`);
+    res.json(urls);
   });
 });
+
 
 app.get('/arch', (req, res) => {
   const directoryPath = path.join(__dirname, 'arch');
