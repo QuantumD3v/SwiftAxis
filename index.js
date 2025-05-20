@@ -91,9 +91,9 @@ app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on http://0.0.0.0:${port}`);
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client-2', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client-2', 'index.html'));
+// });
 
 // Export the Express app for deployment (e.g., Vercel serverless functions)
 module.exports = app;
