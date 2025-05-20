@@ -41,7 +41,9 @@ app.get('/file/img', (req, res) => {
       res.status(500).send('Unable to scan directory');
       return;
     }
-    res.send(files);
+    // ส่งลิงก์ URL ที่เข้าถึงไฟล์ได้
+    const fileUrls = files.map(file => `/img/${file}`);
+    res.json(fileUrls);
   });
 });
 
