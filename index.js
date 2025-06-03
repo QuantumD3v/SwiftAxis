@@ -127,7 +127,7 @@ app.get('/test', (req, res) => {
 //   res.send("Hello, World!");
 // });
 
-app.get('/', (req, res) => sendHTML('personal.html', res));
+app.get('/', (req, res) => sendHTML('home.html', res));
 app.get('/about', (req, res) => sendHTML('about.html', res));
 app.get('/contact', (req, res) => sendHTML('contact.html', res));
 
