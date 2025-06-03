@@ -29,6 +29,8 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "express": "^4.21.2",
+    "mime-types": "^3.0.1",
+    "mine": "^0.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-scripts": "^3.0.1",
